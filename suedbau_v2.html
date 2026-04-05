@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SüdBAU – Hoch- u. Tiefbau GmbH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    /* Real SüdBAU brand colors from logo */
+    --purple:    #7b2d8b;
+    --purple-dk: #5a1f68;
+    --purple-lt: #9e4bae;
+    --black:     #1a1a1a;
+    --off-white: #f2ede8;
+    --warm-gray: #e8e2d9;
+    --concrete:  #c8bfb0;
+    --mid-gray:  #6b6560;
+    --dark-bg:   #1c1a18;
+
+    --font-head: 'Oswald', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-serif: 'Source Serif 4', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--off-white);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 70px;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 3px solid var(--purple);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+    transition: all 0.3s;
+  }
+
+  /* ---- LOGO (SVG recreation of the real brand) ---- */
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .logo-main {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+
+  .logo-sud {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.85rem;
+    color: var(--purple);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .logo-bau {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.85rem;
+    color: var(--black);
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .logo-sub {
+    background: var(--purple);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 6px 2px 4px;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    transition: color 0.25s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 2px;
+    background: var(--purple);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--purple) !important;
+    color: white !important;
+    padding: 0.5rem 1.4rem !important;
+    font-weight: 500 !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--purple-dk) !important; }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  /* Concrete texture background – CSS generated */
+  .hero-concrete {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* Multi-layer concrete/aggregate feel */
+    background-color: #9a9088;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+  }
+
+  .hero-concrete::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='6' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.2'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1' exponent='0.6' offset='-0.1'/%3E%3CfeFuncG type='gamma' amplitude='0.9' exponent='0.65' offset='-0.05'/%3E%3CfeFuncB type='gamma' amplitude='0.85' exponent='0.7' offset='-0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23n2)' opacity='0.7'/%3E%3C/svg%3E");
+    background-size: 600px 600px;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+  }
+
+  /* Real construction photo overlay */
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1800&q=75') center/cover no-repeat;
+    filter: grayscale(55%) contrast(1.1) brightness(0.75);
+    z-index: 1;
+  }
+
+  /* Purple gradient wash from logo color */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(160deg,
+        rgba(123,45,139,0.18) 0%,
+        transparent 45%,
+        rgba(26,26,26,0.72) 100%),
+      linear-gradient(to top,
+        rgba(26,26,26,0.88) 0%,
+        rgba(26,26,26,0.3) 50%,
+        transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 0 4rem 5rem;
+    max-width: 900px;
+    animation: slideUp 1s ease 0.2s both;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--purple);
+    color: white;
+    font-family: var(--font-head);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-h1 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: 0.93;
+    letter-spacing: -0.01em;
+    color: white;
+    margin-bottom: 0.1em;
+  }
+
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--purple-lt);
+  }
+
+  .hero-desc {
+    max-width: 520px;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.78);
+    font-weight: 300;
+    font-style: italic;
+    margin-top: 1.8rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-purple {
+    background: var(--purple);
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.85rem 2.2rem;
+    border: 2px solid var(--purple);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-purple:hover {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+
+  .btn-outline-white {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.85rem 2.2rem;
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-outline-white:hover { border-color: white; }
+
+  /* Hero aside badge */
+  .hero-badge {
+    position: absolute;
+    right: 4rem;
+    bottom: 5rem;
+    z-index: 3;
+    text-align: center;
+    animation: slideUp 1s ease 0.6s both;
+  }
+
+  .hero-badge-inner {
+    background: var(--purple);
+    color: white;
+    padding: 1.4rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .badge-num {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    color: white;
+  }
+
+  .badge-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    margin-top: 0.3rem;
+  }
+
+  /* Strip bottom of hero */
+  .hero-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--purple-dk), var(--purple), var(--purple-lt));
+    z-index: 4;
+  }
+
+  /* ========== LEISTUNGSBAND (ticker) ========== */
+  .ticker {
+    background: var(--purple);
+    padding: 0.65rem 0;
+    overflow: hidden;
+  }
+
+  .ticker-inner {
+    display: flex;
+    width: max-content;
+    animation: tick 28s linear infinite;
+  }
+
+  @keyframes tick {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    padding: 0 2.5rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .ticker-item::after { content: '●'; font-size: 0.35rem; color: rgba(255,255,255,0.5); }
+
+  /* ========== STATS ========== */
+  .stats {
+    background: var(--dark-bg);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--purple);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+
+  .stat:hover::before { transform: scaleX(1); }
+
+  .stat-num {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: var(--purple-lt);
+    line-height: 1;
+  }
+
+  .stat-suffix { font-size: 1.6rem; }
+
+  .stat-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.5rem;
+  }
+
+  /* ========== SECTION HELPERS ========== */
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-head);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 1rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 2rem;
+    height: 2px;
+    background: var(--purple);
+  }
+
+  /* ========== LEISTUNGEN ========== */
+  .leistungen {
+    background: var(--off-white);
+    padding: 7rem 4rem;
+  }
+
+  .leistungen-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 4.5rem;
+  }
+
+  .leistungen-head h2 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+  }
+
+  .leistungen-head p {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--mid-gray);
+    font-style: italic;
+  }
+
+  .leistungen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .leistung-card {
+    background: white;
+    padding: 2.5rem;
+    border-top: 3px solid transparent;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leistung-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 100%;
+    background: var(--purple);
+    transform: translateY(100%);
+    transition: transform 0.4s;
+    z-index: 0;
+  }
+
+  .leistung-card:hover {
+    border-top-color: var(--purple);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(123,45,139,0.2);
+  }
+
+  .leistung-card:hover::after { transform: translateY(85%); }
+
+  .leistung-card > * { position: relative; z-index: 1; }
+
+  .leistung-num {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: rgba(123,45,139,0.08);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+  }
+
+  .leistung-card:hover .leistung-num { color: rgba(255,255,255,0.1); }
+
+  .leistung-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+
+  .leistung-card:hover .leistung-icon { color: rgba(255,255,255,0.9); }
+
+  .leistung-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s;
+  }
+
+  .leistung-card:hover h3 { color: white; }
+
+  .leistung-card p {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--mid-gray);
+    transition: color 0.3s;
+  }
+
+  .leistung-card:hover p { color: rgba(255,255,255,0.75); }
+
+  /* ========== ÜBER UNS / SPLIT ========== */
+  .ueber {
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .ueber-img {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ueber-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(25%) contrast(1.05);
+    transition: transform 0.8s ease;
+  }
+
+  .ueber-img:hover img { transform: scale(1.04); }
+
+  .ueber-img-badge {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--purple);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+  }
+
+  .ueber-img-badge .big {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .ueber-img-badge .small {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .ueber-text {
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--off-white);
+  }
+
+  .ueber-text h2 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    line-height: 1;
+    margin-bottom: 1.8rem;
+  }
+
+  .ueber-text p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--mid-gray);
+    margin-bottom: 1.2rem;
+  }
+
+  .gesellschafter {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-left: 3px solid var(--purple);
+  }
+
+  .gesellschafter h4 {
+    font-family: var(--font-head);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 0.8rem;
+  }
+
+  .gesellschafter p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: var(--black);
+    line-height: 1.8;
+  }
+
+  /* ========== REFERENZEN ========== */
+  .referenzen {
+    background: var(--dark-bg);
+    padding: 7rem 4rem;
+  }
+
+  .referenzen .section-tag { color: var(--purple-lt); }
+  .referenzen .section-tag::before { background: var(--purple-lt); }
+
+  .referenzen h2 {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 3.5vw, 3.8rem);
+    color: white;
+    margin-bottom: 3.5rem;
+    line-height: 0.95;
+  }
+
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ref-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .ref-card:hover {
+    border-color: rgba(123,45,139,0.5);
+    transform: translateY(-3px);
+  }
+
+  .ref-img {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ref-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: transform 0.6s, filter 0.6s;
+  }
+
+  .ref-card:hover .ref-img img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+  }
+
+  .ref-type {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    background: var(--purple);
+    color: white;
+    font-family: var(--font-head);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .ref-body {
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .ref-body h3 {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .ref-body .ref-ort {
+    font-size: 0.75rem;
+    color: var(--purple-lt);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: var(--font-head);
+    margin-bottom: 0.7rem;
+  }
+
+  .ref-body p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  /* ========== WERTE / PURPLE BAND ========== */
+  .werte {
+    background: var(--purple);
+    padding: 5rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .wert {
+    padding: 2rem 2.5rem;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+  }
+
+  .wert:last-child { border-right: none; }
+
+  .wert-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .wert h3 {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: white;
+    margin-bottom: 0.6rem;
+  }
+
+  .wert p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.7;
+  }
+
+  /* ========== KONTAKT ========== */
+  .kontakt {
+    background: var(--off-white);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    min-height: 600px;
+  }
+
+  .kontakt-left {
+    background: var(--dark-bg);
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .kontakt-left .section-tag { color: var(--purple-lt); }
+  .kontakt-left .section-tag::before { background: var(--purple-lt); }
+
+  .kontakt-left h2 {
+    font-family: var(--font-head);
+    font-size: clamp(2rem, 2.8vw, 3rem);
+    font-weight: 600;
+    color: white;
+    line-height: 0.95;
+    margin-bottom: 2.5rem;
+  }
+
+  .kontakt-detail {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.8rem;
+  }
+
+  .kontakt-detail-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: var(--purple);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 2px;
+  }
+
+  .kontakt-detail-text strong {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-lt);
+    margin-bottom: 0.2rem;
+    font-weight: 400;
+  }
+
+  .kontakt-detail-text span {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .kontakt-right {
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+  }
+
+  .kontakt-right h3 {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .form-group { margin-bottom: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group label {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: var(--off-white);
+    border: 1px solid var(--warm-gray);
+    border-bottom: 2px solid var(--warm-gray);
+    padding: 0.8rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.25s;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-bottom-color: var(--purple);
+  }
+
+  .form-group textarea { height: 100px; resize: none; }
+
+  .btn-submit {
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.3s;
+  }
+
+  .btn-submit:hover { background: var(--purple-dk); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #111010;
+    padding: 3.5rem 4rem 1.5rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-logo-area .fl-main {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    margin-bottom: 0.2rem;
+  }
+
+  .fl-sud {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--purple-lt);
+  }
+
+  .fl-bau {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 0.04em;
+  }
+
+  .fl-sub {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-logo-area p {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.4);
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--purple-lt);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    transition: color 0.25s;
+  }
+
+  .footer-col ul li a:hover { color: var(--purple-lt); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-bottom a {
+    color: rgba(255,255,255,0.25);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .footer-bottom a:hover { color: var(--purple-lt); }
+
+  /* ========== SCROLL REVEAL ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    nav { padding: 0 1.5rem; }
+    .hero-content { padding: 0 2rem 4rem; }
+    .hero-badge { right: 2rem; bottom: 4rem; }
+    .leistungen, .referenzen { padding: 5rem 2rem; }
+    .leistungen-head { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3rem; }
+    .leistungen-grid { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: repeat(2,1fr); }
+    .ueber { grid-template-columns: 1fr; }
+    .ueber-img { height: 360px; }
+    .ueber-text { padding: 3rem 2rem; }
+    .werte { grid-template-columns: repeat(2,1fr); }
+    .kontakt { grid-template-columns: 1fr; }
+    .kontakt-left, .kontakt-right { padding: 3.5rem 2rem; }
+    .ref-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    footer { padding: 2.5rem 2rem 1rem; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    nav { padding: 0 1rem; height: 60px; }
+    .hero-content { padding: 0 1.2rem 3rem; }
+    .hero-badge { display: none; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .leistungen-grid { grid-template-columns: 1fr; }
+    .werte { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <a href="#" class="logo-wrap">
+    <div class="logo-main">
+      <span class="logo-sud">Süd</span><span class="logo-bau">BAU</span>
+    </div>
+    <span class="logo-sub">Hoch- u. Tiefbau GmbH.</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#ueber">Über uns</a></li>
+    <li><a href="#referenzen">Referenzen</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <!-- Layered concrete/photo background -->
+  <div class="hero-concrete"></div>
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Purple horizontal edge accent top -->
+  <div style="position:absolute;top:70px;left:0;right:0;height:3px;background:var(--purple);z-index:3;opacity:0.7;"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">St. Veit am Vogau · Südsteiermark · seit 1996</div>
+    <h1 class="hero-h1">
+      Wir bauen<br>
+      <em>Ihre Zukunft.</em>
+    </h1>
+    <p class="hero-desc">
+      Verlässlichkeit, Kompetenz, Flexibilität und Sicherheit – seit über 28 Jahren realisiert SüdBAU Bauprojekte in der Steiermark: vom Traumhaus bis zur Industriehalle.
+    </p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-purple">Jetzt anfragen</a>
+      <a href="#referenzen" class="btn-outline-white">Referenzen ansehen</a>
+    </div>
+  </div>
+
+  <div class="hero-badge">
+    <div class="hero-badge-inner">
+      <span class="badge-num">28+</span>
+      <span class="badge-label">Jahre Erfahrung</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.08);padding:0.7rem 1.2rem;margin-top:2px;text-align:center;">
+      <div style="font-family:var(--font-head);font-size:1.3rem;color:white;line-height:1;">40</div>
+      <div style="font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Mitarbeiter</div>
+    </div>
+  </div>
+
+  <div class="hero-strip"></div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <div class="ticker-item">Keller</div>
+    <div class="ticker-item">Rohbau</div>
+    <div class="ticker-item">Traumhäuser</div>
+    <div class="ticker-item">Landwirtschaftliche Bauten</div>
+    <div class="ticker-item">Außenanlagen</div>
+    <div class="ticker-item">Hochbau</div>
+    <div class="ticker-item">Tiefbau</div>
+    <div class="ticker-item">Straßenbau</div>
+    <div class="ticker-item">Keller</div>
+    <div class="ticker-item">Rohbau</div>
+    <div class="ticker-item">Traumhäuser</div>
+    <div class="ticker-item">Landwirtschaftliche Bauten</div>
+    <div class="ticker-item">Außenanlagen</div>
+    <div class="ticker-item">Hochbau</div>
+    <div class="ticker-item">Tiefbau</div>
+    <div class="ticker-item">Straßenbau</div>
+  </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-num">28<span class="stat-suffix">+</span></div>
+    <div class="stat-label">Jahre Erfahrung</div>
+  </div>
+  <div class="stat reveal" style="transition-delay:.08s">
+    <div class="stat-num">40</div>
+    <div class="stat-label">Qualifizierte Mitarbeiter</div>
+  </div>
+  <div class="stat reveal" style="transition-delay:.16s">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Erfahrene Gesellschafter</div>
+  </div>
+  <div class="stat reveal" style="transition-delay:.24s">
+    <div class="stat-num">100<span class="stat-suffix">%</span></div>
+    <div class="stat-label">Engagement für Qualität</div>
+  </div>
+</div>
+
+<!-- ===== LEISTUNGEN ===== -->
+<section class="leistungen" id="leistungen">
+  <div class="leistungen-head reveal">
+    <div>
+      <div class="section-tag">Unsere Leistungen</div>
+      <h2>WAS WIR<br>FÜR SIE<br>ERRICHTEN</h2>
+    </div>
+    <p>Wir sind stets bestrebt, unseren Kunden Produkte und Dienstleistungen zu einem wirtschaftlichen Preis, in der vereinbarten Qualität und im vereinbarten Leistungsumfang anzubieten.</p>
+  </div>
+
+  <div class="leistungen-grid">
+
+    <div class="leistung-card reveal">
+      <div class="leistung-num">01</div>
+      <svg class="leistung-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 42V30H40V42M4 30V20L24 8L44 20V30"/>
+        <rect x="18" y="30" width="12" height="12"/>
+      </svg>
+      <h3>KELLER</h3>
+      <p>Fachgerechte Kellerausführungen als solides Fundament für jeden Bau – von der Planung bis zur wasserdichten Ausführung.</p>
+    </div>
+
+    <div class="leistung-card reveal" style="transition-delay:.07s">
+      <div class="leistung-num">02</div>
+      <svg class="leistung-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="6" y="18" width="36" height="24"/>
+        <path d="M4 18L24 6L44 18"/>
+        <line x1="14" y1="26" x2="22" y2="26"/>
+        <line x1="26" y1="26" x2="34" y2="26"/>
+        <line x1="14" y1="32" x2="22" y2="32"/>
+        <line x1="26" y1="32" x2="34" y2="32"/>
+      </svg>
+      <h3>ROHBAU</h3>
+      <p>Qualitätvolle Rohbauarbeiten für Wohn- und Gewerbebauten. Termingetreue Ausführung mit modernsten Baumethoden.</p>
+    </div>
+
+    <div class="leistung-card reveal" style="transition-delay:.14s">
+      <div class="leistung-num">03</div>
+      <svg class="leistung-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 42V20L24 8L42 20V42"/>
+        <path d="M18 42V30C18 27.8 19.8 26 22 26H26C28.2 26 30 27.8 30 30V42"/>
+        <path d="M16 20H32M12 28H16M32 28H36"/>
+      </svg>
+      <h3>TRAUMHÄUSER</h3>
+      <p>Wir planen und errichten Ihr individuelles Traumhaus – von der Planung bis zur Schlüsselübergabe, persönlich und zuverlässig.</p>
+    </div>
+
+    <div class="leistung-card reveal" style="transition-delay:.07s">
+      <div class="leistung-num">04</div>
+      <svg class="leistung-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M4 38H44"/>
+        <path d="M6 38V24L16 16H32L42 24V38"/>
+        <line x1="6" y1="30" x2="42" y2="30"/>
+        <path d="M16 38V32H22V38M26 38V32H32V38"/>
+        <path d="M14 24H34"/>
+      </svg>
+      <h3>LANDWIRTSCHAFTLICHE BAUTEN</h3>
+      <p>Hallen, Lager und Spezialbauwerke für landwirtschaftliche Betriebe – funktional, langlebig und kosteneffizient.</p>
+    </div>
+
+    <div class="leistung-card reveal" style="transition-delay:.14s">
+      <div class="leistung-num">05</div>
+      <svg class="leistung-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M4 40C8 32 16 28 24 28C32 28 40 32 44 40"/>
+        <circle cx="24" cy="20" r="8"/>
+        <path d="M24 12V6M14 16L10 12M34 16L38 12"/>
+      </svg>
+      <h3>AUSSENANLAGEN</h3>
+      <p>Gestaltung und Herstellung von Außenanlagen, Parkplätzen, Einfahrten und Grünanlagen als abschließendes Element Ihres Projekts.</p>
+    </div>
+
+    <div class="leistung-card reveal" style="transition-delay:.21s">
+      <div class="leistung-num">06</div>
+      <svg class="leistung-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 40H40M12 40V28L24 18L36 28V40"/>
+        <rect x="20" y="30" width="8" height="10"/>
+        <path d="M4 40H44M16 28H20M28 28H32M16 34H20M28 34H32"/>
+      </svg>
+      <h3>HOCH- &amp; TIEFBAU</h3>
+      <p>Als Generalunternehmer übernehmen wir alle Gewerke – von Erdarbeiten und Fundament bis zum fertigen Objekt aus einer Hand.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== ÜBER UNS ===== -->
+<section class="ueber" id="ueber">
+  <div class="ueber-img">
+    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&q=80" alt="SüdBAU Baustelle" loading="lazy">
+    <div class="ueber-img-badge">
+      <div class="big">1996</div>
+      <span class="small">Gegründet</span>
+    </div>
+  </div>
+  <div class="ueber-text reveal">
+    <div class="section-tag">Über SüdBAU</div>
+    <h2>EIN TRADITIONELLES<br>UNTERNEHMEN</h2>
+    <p>Die Baufirma SüdBAU ist ein traditionelles Unternehmen und wurde im Jahr 1996 gegründet. Mit Sitz in St. Veit am Vogau in der Südsteiermark sind wir regional fest verwurzelt und überregional gefragt.</p>
+    <p>Unsere Kernbereiche sind Keller-, Roh- und Hallenbau sowie Landwirtschaftliche Bauten und Außenanlagen. Mit unseren 40 qualifizierten Mitarbeiterinnen und Mitarbeitern setzen wir täglich auf Verlässlichkeit, Kompetenz, Flexibilität und Sicherheit.</p>
+
+    <div class="gesellschafter">
+      <h4>Gesellschafter &amp; Geschäftsführung</h4>
+      <p>
+        <strong>Geschäftsführer:</strong> Ing. Bernd Frohnwieser · Ing. Gerhard Waltl<br>
+        <strong>Gesellschafter:</strong> Ing. Bernd Frohnwieser · Ing. Markus Pichler · Ing. Thomas Vollmann · Ing. Gerhard Waltl
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WERTE ===== -->
+<div class="werte">
+  <div class="wert reveal">
+    <div class="wert-icon">🏗️</div>
+    <h3>VERLÄSSLICHKEIT</h3>
+    <p>Verbindliche Terminzusagen und konsequente Qualitätskontrolle auf jeder Baustelle.</p>
+  </div>
+  <div class="wert reveal" style="transition-delay:.08s">
+    <div class="wert-icon">⚙️</div>
+    <h3>KOMPETENZ</h3>
+    <p>Über 28 Jahre Erfahrung, ausgebildete Fachkräfte und moderne Baumethoden.</p>
+  </div>
+  <div class="wert reveal" style="transition-delay:.16s">
+    <div class="wert-icon">🤝</div>
+    <h3>FLEXIBILITÄT</h3>
+    <p>Individuelle Lösungen für jedes Projekt – maßgeschneidert für Ihre Anforderungen.</p>
+  </div>
+  <div class="wert reveal" style="transition-delay:.24s">
+    <div class="wert-icon">🛡️</div>
+    <h3>SICHERHEIT</h3>
+    <p>Höchste Sicherheitsstandards auf unseren Baustellen – für Mitarbeiter und Auftraggeber.</p>
+  </div>
+</div>
+
+<!-- ===== REFERENZEN ===== -->
+<section class="referenzen" id="referenzen">
+  <div class="section-tag reveal">Ausgewählte Referenzen</div>
+  <h2 class="reveal">UNSERE<br>PROJEKTE</h2>
+
+  <div class="ref-grid">
+
+    <div class="ref-card reveal">
+      <div class="ref-img">
+        <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=800&q=75" alt="Maislager Hubmann" loading="lazy">
+        <span class="ref-type">Landwirtschaft</span>
+      </div>
+      <div class="ref-body">
+        <h3>MAISLAGER &amp; GERÄTEHALLE</h3>
+        <div class="ref-ort">Weitendorf bei Wildon</div>
+        <p>Projekt der Fam. Hubmann – Errichtung eines Maislagers mit Gerätehalle für den landwirtschaftlichen Betrieb.</p>
+      </div>
+    </div>
+
+    <div class="ref-card reveal" style="transition-delay:.08s">
+      <div class="ref-img">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=75" alt="Einfamilienhaus" loading="lazy">
+        <span class="ref-type">Traumhaus</span>
+      </div>
+      <div class="ref-body">
+        <h3>EINFAMILIENHAUS MIT CARPORT</h3>
+        <div class="ref-ort">Thal bei Graz</div>
+        <p>Projekt der Fam. Habenbacher / Wigoutschnig – modernes Einfamilienhaus mit Carport, schlüsselfertig errichtet.</p>
+      </div>
+    </div>
+
+    <div class="ref-card reveal" style="transition-delay:.08s">
+      <div class="ref-img">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=75" alt="Wohnanlage Stainz" loading="lazy">
+        <span class="ref-type">Wohnbau</span>
+      </div>
+      <div class="ref-body">
+        <h3>WOHNANLAGE STAINZ MARHOF</h3>
+        <div class="ref-ort">Stainz</div>
+        <p>16 Wohnungen mit Garagen – komplette Errichtung der Wohnanlage vom Fundament bis zur Übergabe.</p>
+      </div>
+    </div>
+
+    <div class="ref-card reveal" style="transition-delay:.16s">
+      <div class="ref-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" alt="Einfamilienhaus Seiersberg" loading="lazy">
+        <span class="ref-type">Traumhaus</span>
+      </div>
+      <div class="ref-body">
+        <h3>EINFAMILIENHAUS MIT GARAGE</h3>
+        <div class="ref-ort">Seiersberg</div>
+        <p>Projekt der Fam. Haiden – individuelles Einfamilienhaus mit Garage, nach Kundenwunsch geplant und ausgeführt.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== KONTAKT ===== -->
+<section class="kontakt" id="kontakt">
+  <div class="kontakt-left">
+    <div class="section-tag">Kontakt aufnehmen</div>
+    <h2>BEREIT ZU<br>BAUEN?</h2>
+
+    <div class="kontakt-detail">
+      <div class="kontakt-detail-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="kontakt-detail-text">
+        <strong>Adresse</strong>
+        <span>Werkstraße 18, 8423 St. Veit am Vogau</span>
+      </div>
+    </div>
+
+    <div class="kontakt-detail">
+      <div class="kontakt-detail-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11 19.79 19.79 0 0 1 1.62 2.37 2 2 0 0 1 3.56.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.17 6.17l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="kontakt-detail-text">
+        <strong>Telefon</strong>
+        <span>03453 / 24 04</span>
+      </div>
+    </div>
+
+    <div class="kontakt-detail">
+      <div class="kontakt-detail-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="kontakt-detail-text">
+        <strong>Website</strong>
+        <span>www.suedbau.at</span>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;padding:1.5rem;background:rgba(123,45,139,0.2);border:1px solid rgba(123,45,139,0.3);">
+      <p style="font-size:0.75rem;color:rgba(255,255,255,0.55);letter-spacing:0.05em;line-height:1.7;">
+        <strong style="display:block;color:var(--purple-lt);font-family:var(--font-head);letter-spacing:0.15em;text-transform:uppercase;font-size:0.65rem;margin-bottom:0.4rem;">Anfahrt</strong>
+        Von Graz auf der A9 kommend, Abfahrt Vogau/Strass. Rechts Richtung Ehrenhausen. Beim Kreisverkehr 3. Ausfahrt. Beim Schantlweg rechts, über die A9 zu SüdBAU (neben SüdBeton).
+      </p>
+    </div>
+  </div>
+
+  <div class="kontakt-right">
+    <h3>ANFRAGE STELLEN</h3>
+    <form onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Vorname</label>
+          <input type="text" placeholder="Max" required>
+        </div>
+        <div class="form-group">
+          <label>Nachname</label>
+          <input type="text" placeholder="Mustermann" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-Mail</label>
+        <input type="email" placeholder="max@beispiel.at" required>
+      </div>
+      <div class="form-group">
+        <label>Telefon</label>
+        <input type="tel" placeholder="+43 ...">
+      </div>
+      <div class="form-group">
+        <label>Art des Projekts</label>
+        <select>
+          <option value="" disabled selected>– bitte wählen –</option>
+          <option>Keller</option>
+          <option>Rohbau</option>
+          <option>Traumhaus</option>
+          <option>Landwirtschaftlicher Bau</option>
+          <option>Außenanlage</option>
+          <option>Hochbau / Tiefbau</option>
+          <option>Sonstiges</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ihre Nachricht</label>
+        <textarea placeholder="Beschreiben Sie kurz Ihr Vorhaben…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">Anfrage absenden →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo-area">
+      <div class="fl-main">
+        <span class="fl-sud">Süd</span><span class="fl-bau">BAU</span>
+      </div>
+      <span class="fl-sub">Hoch- u. Tiefbau GmbH.</span>
+      <p>Traditionelles Bauunternehmen in der Südsteiermark. Verlässlichkeit, Kompetenz, Flexibilität und Sicherheit seit 1996.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Leistungen</h4>
+      <ul>
+        <li><a href="#leistungen">Keller</a></li>
+        <li><a href="#leistungen">Rohbau</a></li>
+        <li><a href="#leistungen">Traumhäuser</a></li>
+        <li><a href="#leistungen">Landwirtschaftliche Bauten</a></li>
+        <li><a href="#leistungen">Außenanlagen</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Unternehmen</h4>
+      <ul>
+        <li><a href="#ueber">Über uns</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 SüdBAU Hoch- u. Tiefbau GmbH · Werkstraße 18 · 8423 St. Veit am Vogau · Tel. 03453 / 24 04</span>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Nav on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 60) {
+      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.2)';
+    } else {
+      nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.12)';
+    }
+  });
+
+  // Form submit
+  function submitForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ Vielen Dank – wir melden uns!';
+    btn.style.background = '#2d6e2d';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Anfrage absenden →';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 4000);
+  }
+</script>
+</body>
+</html>
